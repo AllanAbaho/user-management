@@ -9,52 +9,52 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">List of Users</div>
+                <div class="card-header">List of projects</div>
                     <div class="card-body">
-                    <form action="{{ url('users/create') }}" method="GET">
+                    <form action="{{ url('projects/create') }}" method="GET">
                         {{ csrf_field() }}
 
                         <button type="submit" class="btn btn-success">
-                            <i class="fa fa-plus"></i> New User
+                            <i class="fa fa-plus"></i> New project
                         </button>
                     </form><br>
-                    @if (count($users) > 0)
-                        <table class="table table-striped user-table">
+                    @if (count($projects) > 0)
+                        <table class="table table-striped projects-table">
 
                             <!-- Table Headings -->
                             <thead>
                                 <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone Number</th>
-                                <th>Email</th>
+                                <th>Project Name</th>
+                                <th>Scope</th>
+                                <th>Duration</th>
+                                <th>Participants</th>
                             </thead>
 
                             <!-- Table Body -->
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($projects as $project)
                                     <tr>
-                                        <!-- user Name -->
+                                        <!-- projects Name -->
                                         <td class="table-text">
-                                            <div>{{ $user->id }}</div>
+                                            <div>{{ $project->id }}</div>
                                         </td>
 
                                         <td class="table-text">
-                                            <div>{{ $user->first_name }}</div>
+                                            <div>{{ $project->project_name }}</div>
                                         </td>
                                         <td class="table-text">
-                                            <div>{{ $user->last_name }}</div>
+                                            <div>{{ $project->scope }}</div>
                                         </td>
                                         <td class="table-text">
-                                            <div>{{ $user->phone_number }}</div>
+                                            <div>{{ $project->duration }}</div>
                                         </td>
                                         <td class="table-text">
-                                            <div>{{ $user->email }}</div>
+                                            <div>{{ $project->participants }}</div>
                                         </td>
 
                                         <td>
                                             <!-- TODO: Edit Button -->
-                                            <form action="{{ url('users/edit/'.$user->id) }}" method="GET">
+                                            <form action="{{ url('projects/edit/'.$project->id) }}" method="GET">
                                                 {{ csrf_field() }}
 
                                                 <button type="submit" class="btn btn-primary">
@@ -64,7 +64,7 @@
                                         </td>
                                         <td>
                                             <!-- TODO: Delete Button -->
-                                            <form action="{{ url('users/delete/'.$user->id) }}" method="POST">
+                                            <form action="{{ url('projects/delete/'.$project->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 

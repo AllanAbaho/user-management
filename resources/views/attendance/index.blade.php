@@ -9,52 +9,48 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">List of projects</div>
+                <div class="card-header">List of Employees</div>
                     <div class="card-body">
-                    <form action="{{ url('projects/create') }}" method="GET">
+                    <form action="{{ url('attendance/create') }}" method="GET">
                         {{ csrf_field() }}
 
                         <button type="submit" class="btn btn-success">
-                            <i class="fa fa-plus"></i> New project
+                            <i class="fa fa-plus"></i> New Employee
                         </button>
                     </form><br>
-                    @if (count($projects) > 0)
-                        <table class="table table-striped projects-table">
+                    @if (count($attendance) > 0)
+                        <table class="table table-striped attendance-table">
 
                             <!-- Table Headings -->
                             <thead>
                                 <th>ID</th>
-                                <th>Project Name</th>
-                                <th>Scope</th>
-                                <th>Duration</th>
-                                <th>Participants</th>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Status/th>
                             </thead>
 
                             <!-- Table Body -->
                             <tbody>
-                                @foreach ($projects as $project)
+                                @foreach ($attendance as $attendance)
                                     <tr>
-                                        <!-- projects Name -->
+                                        <!-- Name -->
                                         <td class="table-text">
-                                            <div>{{ $project->id }}</div>
+                                            <div>{{ $attendance->id }}</div>
                                         </td>
 
                                         <td class="table-text">
-                                            <div>{{ $project->project_name }}</div>
+                                            <div>{{ $attendance->name }}</div>
                                         </td>
                                         <td class="table-text">
-                                            <div>{{ $project->scope }}</div>
+                                            <div>{{ $attendance->department }}</div>
                                         </td>
                                         <td class="table-text">
-                                            <div>{{ $project->duration }}</div>
-                                        </td>
-                                        <td class="table-text">
-                                            <div>{{ $project->participants }}</div>
+                                            <div>{{ $attendance->status}}</div>
                                         </td>
 
                                         <td>
                                             <!-- TODO: Edit Button -->
-                                            <form action="{{ url('projects/edit/'.$project->id) }}" method="GET">
+                                            <form action="{{ url('attendance/edit/'.$attendance->id) }}" method="GET">
                                                 {{ csrf_field() }}
 
                                                 <button type="submit" class="btn btn-primary">
@@ -64,7 +60,7 @@
                                         </td>
                                         <td>
                                             <!-- TODO: Delete Button -->
-                                            <form action="{{ url('projects/delete/'.$project->id) }}" method="POST">
+                                            <form action="{{ url('attendance/delete/'.$attendance->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 

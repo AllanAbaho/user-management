@@ -54,8 +54,18 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
                                 </li>
-                            @endif                        
-                            <li class="nav-item dropdown">
+                            @endif
+                                @if (Route::has('projects.index'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('projects.index') }}">{{ __('Projects') }}</a>
+                                    </li>
+                                @endif
+                                @if (Route::has('attendance.index'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('attendance.index') }}">{{ __('Attendance') }}</a>
+                                    </li>
+                                @endif
+                                <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->first_name }} <span class="caret"></span>
                                 </a>

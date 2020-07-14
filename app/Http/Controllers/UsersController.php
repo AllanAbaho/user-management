@@ -9,24 +9,24 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
-class ProjectController extends Controller
+class UsersController extends Controller
 {
     public function index(){
         $users = User::all();
-        return view('projects.index', [
-            'projects' => $users
+        return view('users.index', [
+            'users' => $users
         ]);
     }
 
     public function create(){
-        return view('projects.create');
+        return view('users.create');
     }
 
     public function store(Request $request){
         $user = new User; /// create model object
         $validator = Validator::make($request->all(),$user->rules);
         if ($validator->fails()) {
-            return Redirect::to('projects/create')
+            return Redirect::to('users/create')
             ->withErrors($validator);
         }else{
             User::create([

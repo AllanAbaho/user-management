@@ -5,20 +5,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Edit Project') }}</div>
+                <div class="card-header">{{ __('Edit Employee') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url('projects/update/'.$project->id) }}">
+                    <form method="POST" action="{{ url('attendance/update/'.$attendance->id) }}">
                         @csrf
                         {{ method_field('PUT') }}
 
                         <div class="form-group row">
-                            <label for="project_name" class="col-md-4 col-form-label text-md-right">{{ __('Project Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="project_name" type="text" class="form-control @error('project_name') is-invalid @enderror" name="project_name" value="{{ $project->project_name }}" required autocomplete="project_name" autofocus>
-
-                                @error('project_name')
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $attendance->name }}" required autocomplete="name" autofocus>
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -27,12 +26,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="scope" class="col-md-4 col-form-label text-md-right">{{ __('Scope') }}</label>
+                            <label for="department" class="col-md-4 col-form-label text-md-right">{{ __('Department') }}</label>
 
                             <div class="col-md-6">
-                                <input id="scope" type="text" class="form-control @error('scope') is-invalid @enderror" name="scope" value="{{ $project->scope }}" required autocomplete="scope" autofocus>
+                                <input id="department" type="text" class="form-control @error('department') is-invalid @enderror" name="department" value="{{ $attendance->department }}" required autocomplete="department" autofocus>
 
-                                @error('scope')
+                                @error('department')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -41,33 +40,22 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="duration" class="col-md-4 col-form-label text-md-right">{{ __('Duration') }}</label>
+                            <label for="status" class="col-md-4 col-form-label text-md-right">{{ __('Status') }}
+                            </label>
 
                             <div class="col-md-6">
-                                <input id="duration" type="text" class="form-control @error('duration') is-invalid @enderror" name="duration" value="{{ $project->duration}}" required autocomplete="duration" autofocus>
-
-                                @error('duration')
+                                <label>
+                                <input id="status" type="radio" name="status" value="present"> Present
+                                </label>
+                                <label>
+                                    <input id="status" type="radio" name="status" value="absent"> Absent
+                                </label>
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="participants" class="col-md-4 col-form-label text-md-right">{{ __('Participants') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="participants" type="number" class="form-control @error('participants') is-invalid @enderror" name="participants" value="{{ $project->participants }}" required autocomplete="participants">
-
-                                @error('participants')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-success">
